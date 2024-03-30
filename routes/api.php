@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\WeatherController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,5 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/v1/weathers', [WeatherController::class, 'index'])->name('weathers.index');
-Route::get('/v1/weathers/{id}', [WeatherController::class, 'show'])->name('weathers.show');
+Route::prefix('/v1')->group(function () {
+    Route::get('/weather/current', [WeatherController::class, 'getCurrentWeather'])->name('weather.getCurrentWeather');
+});
