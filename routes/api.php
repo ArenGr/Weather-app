@@ -16,4 +16,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('/v1')->group(function () {
     Route::get('/weather/current', [WeatherController::class, 'getCurrentWeather'])->name('weather.getCurrentWeather');
+    Route::get('/weather/geocoding', [WeatherController::class, 'getGeocodingNameByCoordinates'])->name('weather.getGeocodingNameByCoordinates');
 });

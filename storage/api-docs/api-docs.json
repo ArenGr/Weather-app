@@ -1,0 +1,246 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Weather API",
+        "description": "API for retrieving weather data. For detailed information about how to use queries, see [OpenWeatherMap Documentation](https://openweathermap.org/current)",
+        "contact": {
+            "name": "API Support",
+            "email": "admin@example.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/weather/current": {
+            "get": {
+                "tags": [
+                    "Weather"
+                ],
+                "summary": "Get current weather data",
+                "description": "Get the current weather data.",
+                "operationId": "ccbb16b1ff109ad5f8be41f36f4cebc1",
+                "parameters": [
+                    {
+                        "name": "appid",
+                        "in": "query",
+                        "description": "Your unique API key (you can always find it on your account page under the 'API key' tab)",
+                        "required": true,
+                        "example": "your_api_key"
+                    },
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "description": "City name, state code, and country code divided by comma. Please refer to ISO 3166 for the state codes or country codes. You can specify the parameter not only in English. In this case, the API response should be returned in the same language as the language of the requested location name if the location is in our predefined list of more than 200,000 locations.",
+                        "required": true,
+                        "example": "New York, US"
+                    },
+                    {
+                        "name": "lat",
+                        "in": "query",
+                        "description": "Latitude. If you need the geocoder to automatic convert city names and zip-codes to geo coordinates and the other way around, please use our Geocoding API",
+                        "required": false,
+                        "example": 40.7128
+                    },
+                    {
+                        "name": "lon",
+                        "in": "query",
+                        "description": "Longitude. If you need the geocoder to automatic convert city names and zip-codes to geo coordinates and the other way around, please use our Geocoding API",
+                        "required": false,
+                        "example": -74.006
+                    },
+                    {
+                        "name": "mode",
+                        "in": "query",
+                        "description": "Response format. Possible values are xml and html. If you don't use the mode parameter format is JSON by default.",
+                        "required": false,
+                        "example": "json"
+                    },
+                    {
+                        "name": "units",
+                        "in": "query",
+                        "description": "Units of measurement. standard, metric and imperial units are available. If you do not use the units parameter, standard units will be applied by default.",
+                        "required": false,
+                        "example": "metric"
+                    },
+                    {
+                        "name": "lang",
+                        "in": "query",
+                        "description": "You can use this parameter to get the output in your language.",
+                        "required": false,
+                        "example": "en"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "description": "Weather data",
+                                            "type": "object",
+                                            "example": {
+                                                "temperature": 25,
+                                                "condition": "sunny"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "description": "HTTP status code",
+                                            "type": "integer",
+                                            "example": 400
+                                        },
+                                        "message": {
+                                            "description": "Error message",
+                                            "type": "string",
+                                            "example": "Bad Request"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "description": "HTTP status code",
+                                            "type": "integer",
+                                            "example": 500
+                                        },
+                                        "message": {
+                                            "description": "Error message",
+                                            "type": "string",
+                                            "example": "Internal Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/weather/geocoding": {
+            "get": {
+                "tags": [
+                    "Geocoding"
+                ],
+                "summary": "Get geocoding information based on coordinates",
+                "description": "Get geocoding information based on geographical coordinates.",
+                "operationId": "083e3fed2d7497f25d88bdd9e66db324",
+                "parameters": [
+                    {
+                        "name": "lat",
+                        "in": "query",
+                        "description": "Geographical latitude coordinate",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "format": "float"
+                        },
+                        "example": 40.7128
+                    },
+                    {
+                        "name": "lon",
+                        "in": "query",
+                        "description": "Geographical longitude coordinate",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "format": "float"
+                        },
+                        "example": -74.006
+                    },
+                    {
+                        "name": "appid",
+                        "in": "query",
+                        "description": "Your unique API key",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "your_api_key"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Number of location names in the API response",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "example": 5
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "city": {
+                                            "description": "City name",
+                                            "type": "string",
+                                            "example": "New York"
+                                        },
+                                        "state": {
+                                            "description": "State code",
+                                            "type": "string",
+                                            "example": "NY"
+                                        },
+                                        "country": {
+                                            "description": "Country code",
+                                            "type": "string",
+                                            "example": "US"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "Error message",
+                                            "type": "string",
+                                            "example": "An error occurred while fetching geocoding information"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
