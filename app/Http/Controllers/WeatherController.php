@@ -9,13 +9,13 @@ class WeatherController extends Controller
 {
     /**
      * Get the current weather data.
-     *
+     * Example: localhost:8000/api/v1/weather/current?q={city name}&appid={API key}
      * @OA\Info(
      *      title="Weather API",
      *      version="1.0.0",
      *      description="API for retrieving weather data. For detailed information about how to use queries, see [OpenWeatherMap Documentation](https://openweathermap.org/current)",
      *      @OA\Contact(
-     *          email="admin@example.com",
+     *          email="arengr.1990@gmail.com",
      *          name="API Support"
      *      ),
      *      @OA\License(
@@ -23,11 +23,10 @@ class WeatherController extends Controller
      *          url="http://www.apache.org/licenses/LICENSE-2.0.html"
      *      )
      * )    *
-     *
      * @OA\Get(
      *     path="/api/v1/weather/current",
-     *     summary="Get current weather data",
-     *     tags={"Weather"},
+     *     summary="Get current weather data. ",
+     *     tags={"Weather: current"},
      *     @OA\Parameter(
      *         name="appid",
      *         in="query",
@@ -140,11 +139,12 @@ class WeatherController extends Controller
 
     /**
      * Get geocoding information based on geographical coordinates.
+     * Example: localhost:8000/api/v1/weather/geocoding?lat={lat}&lon={lon}&limit={limit}&appid={API key}
      *
      * @OA\Get(
      *     path="/api/v1/weather/geocoding",
-     *     summary="Get geocoding information based on coordinates",
-     *     tags={"Geocoding"},
+     *     summary="Get geocoding information based on coordinates.",
+     *     tags={"Weahter: geocoding"},
      *     @OA\Parameter(
      *         name="lat",
      *         in="query",

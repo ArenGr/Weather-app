@@ -5,7 +5,7 @@
         "description": "API for retrieving weather data. For detailed information about how to use queries, see [OpenWeatherMap Documentation](https://openweathermap.org/current)",
         "contact": {
             "name": "API Support",
-            "email": "admin@example.com"
+            "email": "arengr.1990@gmail.com"
         },
         "license": {
             "name": "Apache 2.0",
@@ -17,10 +17,10 @@
         "/api/v1/weather/current": {
             "get": {
                 "tags": [
-                    "Weather"
+                    "Weather: current"
                 ],
-                "summary": "Get current weather data",
-                "description": "Get the current weather data.",
+                "summary": "Get current weather data. ",
+                "description": "Get the current weather data.\nExample: localhost:8000/api/v1/weather/current?q={city name}&appid={API key}**",
                 "operationId": "ccbb16b1ff109ad5f8be41f36f4cebc1",
                 "parameters": [
                     {
@@ -144,10 +144,10 @@
         "/api/v1/weather/geocoding": {
             "get": {
                 "tags": [
-                    "Geocoding"
+                    "Weahter: geocoding"
                 ],
-                "summary": "Get geocoding information based on coordinates",
-                "description": "Get geocoding information based on geographical coordinates.",
+                "summary": "Get geocoding information based on coordinates.",
+                "description": "Get geocoding information based on geographical coordinates.\nExample: localhost:8000/api/v1/weather/geocoding?lat={lat}&lon={lon}&limit={limit}&appid={API key}",
                 "operationId": "083e3fed2d7497f25d88bdd9e66db324",
                 "parameters": [
                     {

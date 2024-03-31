@@ -87,7 +87,7 @@ class WeatherService
      * @return mixed  The JSON response from the API
      * @throws \Illuminate\Http\Client\RequestException
      */
-    public function getCurrentWeatherByCityName(): mixed
+    public function getCurrentWeatherByName(): mixed
     {
         return $this->makeRequest($this->openWeatherMapApiUrl);
     }
