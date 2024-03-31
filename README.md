@@ -2,8 +2,6 @@
 
 This project is a Laravel-based service for retrieving weather data from the OpenWeatherMap API.
 
-## Getting Started
-
 ### Prerequisites
 
 Before running the application, make sure you have the following installed on your system:
@@ -37,7 +35,7 @@ Before running the application, make sure you have the following installed on yo
    ```bash
    php artisan serve
 
-#### The Weather API service will be accessible at http://localhost:8000.
+The Weather API service will be accessible at http://localhost:8000.
 
-API Documentation
-The API endpoints and usage instructions are documented using Swagger. You can access the Swagger UI by visiting /api/documentation when the application is running.
+### API Documentation
+The API endpoints and usage instructions are documented using Swagger. You can access the Swagger UI by visiting **/api/documentation** when the application is running.
